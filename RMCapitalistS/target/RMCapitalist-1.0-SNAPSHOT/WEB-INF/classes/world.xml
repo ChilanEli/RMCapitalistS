@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<world
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='src/main/resources/jaxb/world/worldSchema.xsd'>
+    <name>Capitalist Mortys</name>
+    <logo>img/logo1.png</logo>
+    <money>5.00</money>
+    <score>0</score>
+    <totalangels>0</totalangels>
+    <activeangels>0</activeangels>
+    <angelbonus>2</angelbonus>
+    <lastupdate></lastupdate>
+    <products>
+        <product>
+            <id>1</id>
+            <name>Jerry</name>
+            <logo>img/Jerry_Smith.png</logo>
+            <cout>4</cout>
+            <croissance>1.07</croissance>
+            <revenu>1</revenu>
+            <vitesse>500</vitesse>
+            <quantite>0</quantite>
+            <timeleft>500</timeleft>
+            <managerUnlocked>false</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Trophé</name>
+                    <logo>img/jerry/j1.png</logo>
+                    <seuil>25</seuil>
+                    <idcible>1</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Médaille</name>
+                    <logo>img/jerry/j2.png</logo>
+                    <seuil>50</seuil>
+                    <idcible>1</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Riche</name>
+                    <logo>img/jerry/j3.png</logo>
+                    <seuil>100</seuil>
+                    <idcible>1</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>2</id>
+            <name>Beth</name>
+            <logo>img/Beth_Smith.png</logo>
+            <cout>60</cout>
+            <croissance>1.15</croissance>
+            <revenu>60</revenu>
+            <vitesse>3000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>3000</timeleft>
+            <managerUnlocked>false</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Virtuel</name>
+                    <logo>img/beth/b1.png</logo>
+                    <seuil>25</seuil>
+                    <idcible>1</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Triste</name>
+                    <logo>img/beth/b2.png</logo>
+                    <seuil>50</seuil>
+                    <idcible>1</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Heureuse</name>
+                    <logo>img/beth/b3.png</logo>
+                    <seuil>100</seuil>
+                    <idcible>1</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+    </products>
+    <allunlocks>
+        <pallier>
+            <name></name>
+            <logo></logo>
+            <seuil></seuil>
+            <idcible></idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked></unlocked>
+        </pallier>
+        <pallier>
+            <name></name>
+            <logo></logo>
+            <seuil></seuil>
+            <idcible></idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked></unlocked>
+        </pallier>
+    </allunlocks>
+    <upgrades>
+    </upgrades>
+    <angelupgrades>
+    </angelupgrades>
+    <managers>
+        <pallier>
+            <name>Manager 1</name>
+            <logo>img/Salesman_Rick.png</logo>
+            <seuil>1000.00</seuil>
+            <idcible>1</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Manager 2</name>
+            <logo>img/Salesman_Rick.png</logo>
+            <seuil>15000.00</seuil>
+            <idcible>2</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+    </managers>
+
+</world>
