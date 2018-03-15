@@ -1,7 +1,10 @@
 generated\PallierType.class
 generated\World.class
+com\mycompany\rmcapitalist\GenericResource.class
 generated\ObjectFactory.class
 generated\ProductType.class
 generated\TyperatioType.class
 generated\PalliersType.class
 generated\ProductsType.class
+com\mycompany\rmcapitalist\ApplicationConfig.class
+com\mycompany\rmcapitalist\Services.class

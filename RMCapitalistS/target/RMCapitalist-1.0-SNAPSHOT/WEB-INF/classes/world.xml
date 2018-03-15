@@ -8,8 +8,8 @@ and open the template in the editor.
 
 <world
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xsi:noNamespaceSchemaLocation='src/main/resources/jaxb/world/worldSchema.xsd'>
-    <name>Capitalist Mortys</name>
+    xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
+    <name>Capitalist Rick and Morty</name>
     <logo>img/logo1.png</logo>
     <money>5.00</money>
     <score>0</score>
