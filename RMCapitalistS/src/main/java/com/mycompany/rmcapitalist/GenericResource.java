@@ -67,7 +67,7 @@ public class GenericResource {
     }
     
     @GET
-    @Path("worldG")
+    @Path("world")
     @Produces(MediaType.APPLICATION_JSON)
     // Pareil quet getXml mais retourne du Json depuis un objet complexe Java
     public Response getXmlGson(){

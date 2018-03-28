@@ -85,7 +85,7 @@
             <!-- chemin relatif menant à une image représentative du pallier -->
             <xs:element name="logo" type="xs:string"/> 
             <!-- valeur du pallier à atteindre quand il s'agit d'un seuil, ou coût de l'upgrade sinon -->
-            <xs:element name="seuil" type="xs:int"/> 
+            <xs:element name="seuil" type="xs:double"/> 
             <!-- produit cible de l'upgrade, 0 s'il s'agit de tous les produits, -1 si c'est un effet sur un ange -->
             <xs:element name="idcible" type="xs:int"/> 
             <!-- bonus obtenu sous la forme d'un multiplicateur de vitesse ou de revenu, ou de pourcentage d'ange -->

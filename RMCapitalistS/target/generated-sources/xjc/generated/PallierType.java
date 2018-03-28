@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.03.15 à 06:22:29 PM CET 
+// Généré le : 2018.03.21 à 03:40:14 PM CET 
 //
 
 
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="logo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="seuil" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="seuil" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="idcible" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="ratio" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="typeratio" type="{}typeratioType"/&gt;
@@ -56,7 +56,7 @@ public class PallierType {
     protected String name;
     @XmlElement(required = true)
     protected String logo;
-    protected int seuil;
+    protected double seuil;
     protected int idcible;
     protected double ratio;
     @XmlElement(required = true)
@@ -116,7 +116,7 @@ public class PallierType {
      * Obtient la valeur de la propriété seuil.
      * 
      */
-    public int getSeuil() {
+    public double getSeuil() {
         return seuil;
     }
 
@@ -124,7 +124,7 @@ public class PallierType {
      * Définit la valeur de la propriété seuil.
      * 
      */
-    public void setSeuil(int value) {
+    public void setSeuil(double value) {
         this.seuil = value;
     }
 

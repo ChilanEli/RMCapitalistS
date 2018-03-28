@@ -25,7 +25,10 @@ public class Services {
         JAXBContext cont = JAXBContext.newInstance(World.class);
         Unmarshaller u = cont.createUnmarshaller();
         try {
-            world = (World) u.unmarshal(new File("world.xml"));
+                // lors du dev, il y a déjà un fichier world.xml côté client, il faut donc le supprimer et le créer via ces deux lignes
+            InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
+            world = (World) u.unmarshal(input);
+//            world = (World) u.unmarshal(new File("world.xml"));
         } catch (JAXBException e) {
             InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
             world = (World) u.unmarshal(input);

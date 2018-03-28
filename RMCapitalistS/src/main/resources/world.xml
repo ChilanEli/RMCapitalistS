@@ -10,7 +10,7 @@ and open the template in the editor.
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
     <name>Capitalist Rick and Morty</name>
-    <logo>img/logo1.png</logo>
+    <logo>img/logo.png</logo>
     <money>5.00</money>
     <score>0</score>
     <totalangels>0</totalangels>
@@ -20,7 +20,7 @@ and open the template in the editor.
     <products>
         <product>
             <id>1</id>
-            <name>Jerry</name>
+            <name>Jerry Smith</name>
             <logo>img/Jerry_Smith.png</logo>
             <cout>4</cout>
             <croissance>1.07</croissance>
@@ -61,7 +61,7 @@ and open the template in the editor.
         </product>
         <product>
             <id>2</id>
-            <name>Beth</name>
+            <name>Beth Smith</name>
             <logo>img/Beth_Smith.png</logo>
             <cout>60</cout>
             <croissance>1.15</croissance>
