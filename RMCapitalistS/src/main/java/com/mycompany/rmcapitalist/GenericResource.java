@@ -97,7 +97,7 @@ public class GenericResource {
     public void putProduct(String data, @Context HttpServletRequest request) throws JAXBException {
         String username = request.getHeader("X-user");
         ProductType product = new Gson().fromJson(data, ProductType.class);
-        service.updateProduct(product, username);
+        service.updateProduct(username, product);
     }
 
     @PUT
@@ -106,6 +106,6 @@ public class GenericResource {
     public void putManager(String data, @Context HttpServletRequest request) throws JAXBException {
         String username = request.getHeader("X-user");
         PallierType manager = new Gson().fromJson(data, PallierType.class);
-        service.updateManager(manager, username);
+        service.updateManager(username, manager);
     }
 }
