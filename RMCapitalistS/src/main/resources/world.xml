@@ -16,7 +16,7 @@ and open the template in the editor.
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>
     <angelbonus>2</angelbonus>
-    <lastupdate></lastupdate>
+    <lastupdate>0</lastupdate>
     <products>
         <product>
             <id>1</id>
@@ -25,13 +25,13 @@ and open the template in the editor.
             <cout>4</cout>
             <croissance>1.07</croissance>
             <revenu>1</revenu>
-            <vitesse>500</vitesse>
+            <vitesse>5000</vitesse>
             <quantite>0</quantite>
-            <timeleft>500</timeleft>
+            <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
-                    <name>Trophé</name>
+                    <name>Trophée</name>
                     <logo>img/jerry/j1.png</logo>
                     <seuil>25</seuil>
                     <idcible>1</idcible>
@@ -68,7 +68,7 @@ and open the template in the editor.
             <revenu>60</revenu>
             <vitesse>3000</vitesse>
             <quantite>0</quantite>
-            <timeleft>3000</timeleft>
+            <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
@@ -129,7 +129,7 @@ and open the template in the editor.
         <pallier>
             <name>Manager 1</name>
             <logo>img/Salesman_Rick.png</logo>
-            <seuil>1000.00</seuil>
+            <seuil>6</seuil>
             <idcible>1</idcible>
             <ratio></ratio>
             <typeratio></typeratio>

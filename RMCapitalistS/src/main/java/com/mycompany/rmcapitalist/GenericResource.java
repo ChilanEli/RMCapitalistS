@@ -15,10 +15,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import generated.World;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
+import generated.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.PUT;
 
 /**
  * REST Web Service
@@ -40,53 +42,70 @@ public class GenericResource {
     }
 
     /**
-     * Retrieves representation of an instance of com.mycompany.rmcapitalist.GenericResource
+     * Retrieves representation of an instance of
+     * com.mycompany.rmcapitalist.GenericResource
+     *
+     * @param request
      * @return an instance of java.lang.String
      */
     @GET
     @Path("world")
     @Produces(MediaType.APPLICATION_XML)
-    public Response getXml(){
+    public Response getXml(@Context HttpServletRequest request) {
+        String username = request.getHeader("X-user");
         World world;
-        try
-        {
-                // On récupère le world courrant
-            world = service.getWorld();
-                // Génère un ResponseBuilder avec un "OK status" et le build
+        try {
+            // On récupère le world courrant
+            world = service.getWorld(username);
+            // Génère un ResponseBuilder avec un "OK status" et le build
             return Response.ok(world).build();
-        }
-        catch(JAXBException e)
-        {
-                // On enregistre l'erreur dans le log ayant pour nom le nom de la classe s'il existe, sinon on le crée
-                // dans lequel on associe un level soit du type : "FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE", le message est null mais on peut mettre celui de "e" et le Throwable information est "e".
+        } catch (JAXBException e) {
+            // On enregistre l'erreur dans le log ayant pour nom le nom de la classe s'il existe, sinon on le crée
+            // dans lequel on associe un level soit du type : "FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE", le message est null mais on peut mettre celui de "e" et le Throwable information est "e".
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, e);
-                
+
         }
-            // Génère un ResponseBuilder avec un état not found.
+        // Génère un ResponseBuilder avec un état not found.
         return Response.status(Response.Status.NOT_FOUND).build();
     }
-    
+
     @GET
     @Path("world")
     @Produces(MediaType.APPLICATION_JSON)
     // Pareil quet getXml mais retourne du Json depuis un objet complexe Java
-    public Response getXmlGson(){
+    public Response getXmlGson(@Context HttpServletRequest request) {
+        String username = request.getHeader("X-user");
         World world;
-        try
-        {
-                // On récupère le world courrant
-            world = service.getWorld();
-                // Génère un ResponseBuilder avec un "OK status" et le build
+        try {
+            // On récupère le world courrant
+            world = service.getWorld(username);
+            // Génère un ResponseBuilder avec un "OK status" et le build
             return Response.ok(new Gson().toJson(world)).build();
-        }
-        catch(JAXBException e)
-        {
-                // On enregistre l'erreur dans le log ayant pour nom le nom de la classe s'il existe, sinon on le crée
-                // dans lequel on associe un level soit du type : "FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE", le message est null mais on peut mettre celui de "e" et le Throwable information est "e".
+        } catch (JAXBException e) {
+            // On enregistre l'erreur dans le log ayant pour nom le nom de la classe s'il existe, sinon on le crée
+            // dans lequel on associe un level soit du type : "FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE", le message est null mais on peut mettre celui de "e" et le Throwable information est "e".
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, e);
-                
+
         }
-            // Génère un ResponseBuilder avec un état not found.
+        // Génère un ResponseBuilder avec un état not found.
         return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @PUT
+    @Path("product")
+    @Consumes(MediaType.APPLICATION_XML)
+    public void putProduct(String data, @Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        ProductType product = new Gson().fromJson(data, ProductType.class);
+        service.updateProduct(product, username);
+    }
+
+    @PUT
+    @Path("manager")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void putManager(String data, @Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        PallierType manager = new Gson().fromJson(data, PallierType.class);
+        service.updateManager(manager, username);
     }
 }
