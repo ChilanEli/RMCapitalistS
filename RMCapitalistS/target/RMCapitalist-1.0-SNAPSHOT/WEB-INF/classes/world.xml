@@ -267,43 +267,259 @@ and open the template in the editor.
     </products>
     <allunlocks>
         <pallier>
-            <name></name>
-            <logo></logo>
-            <seuil></seuil>
-            <idcible></idcible>
-            <ratio></ratio>
-            <typeratio></typeratio>
-            <unlocked></unlocked>
+            <name>King Jellybean</name>
+            <logo>img/allunlocks/m7.png</logo>
+            <seuil>10</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name></name>
-            <logo></logo>
-            <seuil></seuil>
-            <idcible></idcible>
-            <ratio></ratio>
-            <typeratio></typeratio>
-            <unlocked></unlocked>
+            <name>President of the United States</name>
+            <logo>img/allunlocks/m8.png</logo>
+            <seuil>25</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Squanchy</name>
+            <logo>img/allunlocks/m9.png</logo>
+            <seuil>50</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Krombopoulos</name>
+            <logo>img/allunlocks/m10.jpg</logo>
+            <seuil>75</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Jessica</name>
+            <logo>img/allunlocks/m11.png</logo>
+            <seuil>100</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Unity</name>
+            <logo>img/allunlocks/m12.jpg</logo>
+            <seuil>150</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
         </pallier>
     </allunlocks>
     <upgrades>
+        <pallier>
+            <name>Puce manipulatrice de Mortys</name>
+            <logo>img/items/i1.png</logo>
+            <seuil>100000</seuil>
+            <idcible>1</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Halzinger pure</name>
+            <logo>img/items/i2.png</logo>
+            <seuil>200000</seuil>
+            <idcible>2</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Roche Plutonique Pure</name>
+            <logo>img/items/i3.png</logo>
+            <seuil>250000</seuil>
+            <idcible>3</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Coursier flasque</name>
+            <logo>img/items/i4.png</logo>
+            <seuil>500000</seuil>
+            <idcible>4</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Méga graine</name>
+            <logo>img/items/i5.png</logo>
+            <seuil>1000000</seuil>
+            <idcible>5</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Super pile</name>
+            <logo>img/items/i6.png</logo>
+            <seuil>2500000</seuil>
+            <idcible>6</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Batterie microvers</name>
+            <logo>img/items/i7.png</logo>
+            <seuil>5000000</seuil>
+            <idcible>1</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Fleeb purifié</name>
+            <logo>img/items/i8.png</logo>
+            <seuil>10000000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Matière noire</name>
+            <logo>img/items/i9.png</logo>
+            <seuil>25000000</seuil>
+            <idcible>2</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Collier pour chien</name>
+            <logo>img/items/i10.png</logo>
+            <seuil>50000000</seuil>
+            <idcible>3</idcible>
+            <ratio>4</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Elixir d'amour</name>
+            <logo>img/items/i11.png</logo>
+            <seuil>100000000</seuil>
+            <idcible>5</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Robot pour beurre</name>
+            <logo>img/items/i12.png</logo>
+            <seuil>250000000</seuil>
+            <idcible>6</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
     </upgrades>
     <angelupgrades>
+        <pallier>
+            <name>Condorman 1</name>
+            <logo>img/angels.png</logo>
+            <seuil>10000</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Condorman 2</name>
+            <logo>img/angels.png</logo>
+            <seuil>100000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Condorman 3</name>
+            <logo>img/angels.png</logo>
+            <seuil>25000000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Condorman 4</name>
+            <logo>img/angels.png</logo>
+            <seuil>50000000</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
     </angelupgrades>
     <managers>
         <pallier>
-            <name>Manager 1</name>
-            <logo>img/Salesman_Rick.png</logo>
-            <seuil>6</seuil>
+            <name>Mr. Poopybutthole</name>
+            <logo>img/managers/m1.png</logo>
+            <seuil>1</seuil>
             <idcible>1</idcible>
             <ratio></ratio>
             <typeratio></typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Manager 2</name>
-            <logo>img/Salesman_Rick.png</logo>
+            <name>Galactic Federation President</name>
+            <logo>img/managers/m2.png</logo>
             <seuil>15000.00</seuil>
             <idcible>2</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Satan</name>
+            <logo>img/managers/m3.png</logo>
+            <seuil>100000.00</seuil>
+            <idcible>3</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Abradolf Lincler</name>
+            <logo>img/managers/m4.jpg</logo>
+            <seuil>500000.00</seuil>
+            <idcible>4</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Scary Terry</name>
+            <logo>img/managers/m5.jpg</logo>
+            <seuil>1200000.00</seuil>
+            <idcible>5</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Boule de neige</name>
+            <logo>img/managers/m6.jpg</logo>
+            <seuil>10000000.00</seuil>
+            <idcible>6</idcible>
             <ratio></ratio>
             <typeratio></typeratio>
             <unlocked>false</unlocked>

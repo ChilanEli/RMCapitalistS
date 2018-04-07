@@ -29,9 +29,9 @@ public class Services {
         Unmarshaller u = cont.createUnmarshaller();
         try {
             // lors du dev au début, il y a déjà un fichier world.xml côté client, il faut donc le supprimer et le créer via ces deux lignes
-            InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
-            world = (World) u.unmarshal(input);
-//            world = (World) u.unmarshal(new File(username + "_world.xml"));
+//            InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
+//            world = (World) u.unmarshal(input);
+            world = (World) u.unmarshal(new File(username + "-world.xml"));
         } catch (JAXBException e) {
             InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
             world = (World) u.unmarshal(input);
@@ -42,11 +42,12 @@ public class Services {
     void saveWorldToXml(String username, World world) throws JAXBException {
         JAXBContext cont = JAXBContext.newInstance(World.class);
         Marshaller m = cont.createMarshaller();
-        m.marshal(world, new File(username + "_world.xml"));
+        m.marshal(world, new File(username + "-world.xml"));
     }
 
     public World getWorld(String username) throws JAXBException {
         World world = readWorldFromXml(username);
+        calcNewScore(world);
         world.setLastupdate(System.currentTimeMillis());
         saveWorldToXml(username, world);
         return world;
@@ -131,6 +132,32 @@ public class Services {
         } catch (Exception e) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, e);
             return null;
+        }
+    }
+
+    public void calcNewScore(World w) {
+        long temp = System.currentTimeMillis();
+        for (ProductType p : w.getProducts().getProduct()) {
+            if ((p.isManagerUnlocked()) && (p.getQuantite() > 0)) {
+                long t = Math.floorDiv(temp - w.getLastupdate() + p.getVitesse() - p.getTimeleft(), p.getVitesse());
+                long tempRest = Math.floorDiv(temp - w.getLastupdate() + p.getVitesse() - p.getTimeleft(), p.getVitesse());
+
+                w.setMoney(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus() / 100)) * t);
+                w.setScore(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus() / 100)) * t);
+
+                p.setTimeleft(tempRest);
+                if (p.getTimeleft() < 0) {
+                    p.setTimeleft(0);
+                }
+            } else {
+                if (p.getTimeleft() > 0 && p.getTimeleft() <= temp - w.getLastupdate()) {
+                    w.setMoney(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus() / 100)));
+                    w.setScore(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus() / 100)));
+                    p.setTimeleft(0);
+                } else if (p.getTimeleft() > 0) {
+                    p.setTimeleft(p.getTimeleft() - (temp - w.getLastupdate()));
+                }
+            }
         }
     }
 }
