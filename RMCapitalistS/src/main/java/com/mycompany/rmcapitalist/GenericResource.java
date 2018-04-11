@@ -77,6 +77,7 @@ public class GenericResource {
         String username = request.getHeader("X-user");
         World world;
         try {
+            System.out.println(username);
             // On récupère le world courrant
             world = service.getWorld(username);
             // Génère un ResponseBuilder avec un "OK status" et le build
@@ -93,7 +94,7 @@ public class GenericResource {
 
     @PUT
     @Path("product")
-    @Consumes(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void putProduct(String data, @Context HttpServletRequest request) throws JAXBException {
         String username = request.getHeader("X-user");
         ProductType product = new Gson().fromJson(data, ProductType.class);
@@ -108,4 +109,22 @@ public class GenericResource {
         PallierType manager = new Gson().fromJson(data, PallierType.class);
         service.updateManager(username, manager);
     }
+//
+//    @PUT
+//    @Path("upgrade")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void putUpgrade(String data, @Context HttpServletRequest request) throws JAXBException {
+//        String username = request.getHeader("X-user");
+//        PallierType upgrade = new Gson().fromJson(data, PallierType.class);
+//        service.updateUpgrade(upgrade, username);
+//    }
+//
+//    @PUT
+//    @Path(APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void putAngelUpgrade(String data, @Context HttpServletRequest request) throws JAXBException {
+//        String username = request.getHeader("X-user");
+//        PallierType angelupgrade = new Gson().fromJson(data, PallierType.class);
+//        service.updateAngelUpgrade(angelupgrade, username);
+//    }
 }
