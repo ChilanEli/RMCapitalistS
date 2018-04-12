@@ -4,6 +4,7 @@ com\mycompany\rmcapitalist\GenericResource.class
 generated\ObjectFactory.class
 generated\ProductType.class
 generated\TyperatioType.class
+com\mycompany\rmcapitalist\Services$1.class
 generated\PalliersType.class
 generated\ProductsType.class
 com\mycompany\rmcapitalist\ApplicationConfig.class

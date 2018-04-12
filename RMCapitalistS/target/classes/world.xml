@@ -13,9 +13,9 @@ and open the template in the editor.
     <logo>img/logo.png</logo>
     <money>100000000.00</money>
     <score>0</score>
-    <totalangels>0</totalangels>
+    <totalangels>1</totalangels>
     <activeangels>1</activeangels>
-    <angelbonus>0.02</angelbonus>
+    <angelbonus>2</angelbonus>
     <lastupdate>0</lastupdate>
     <products>
         <product>
@@ -446,7 +446,7 @@ and open the template in the editor.
             <logo>img/angel.png</logo>
             <seuil>100000</seuil>
             <idcible>0</idcible>
-            <ratio>0.02</ratio>
+            <ratio>2</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
@@ -455,7 +455,7 @@ and open the template in the editor.
             <logo>img/angel.png</logo>
             <seuil>25000000</seuil>
             <idcible>0</idcible>
-            <ratio>0.02</ratio>
+            <ratio>2</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>

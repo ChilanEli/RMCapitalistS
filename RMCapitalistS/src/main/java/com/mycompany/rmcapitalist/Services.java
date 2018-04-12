@@ -94,13 +94,14 @@ public class Services {
             for (PallierType p : product.getPalliers().getPallier()) {
                 if (!p.isUnlocked() && product.getQuantite() >= p.getSeuil()) {
                     p.setUnlocked(!p.isUnlocked());
-                    TyperatioType type = p.getTyperatio();
-                    if (p.getTyperatio() == type.fromValue("GAIN")) {
-                        product.setRevenu(product.getRevenu() * p.getRatio());
-                    } else if (p.getTyperatio() == type.fromValue("VITESSE")) {
-
-                        product.setVitesse((int) (product.getVitesse() / p.getRatio()));
-                        product.setTimeleft((long) (product.getTimeleft() / p.getRatio()));
+                    switch (p.getTyperatio()) {
+                        case GAIN:
+                            product.setRevenu(product.getRevenu() * p.getRatio());
+                            break;
+                        default:
+                            product.setVitesse((int) (product.getVitesse() / p.getRatio()));
+                            product.setTimeleft((long) (product.getTimeleft() / p.getRatio()));
+                            break;
                     }
                 }
             }
@@ -115,15 +116,18 @@ public class Services {
                     }
                     if (isReached) {
                         unlock.setUnlocked(true);;
-                        if (unlock.getTyperatio().equals("gain")) {
-                            for (ProductType pr : world.getProducts().getProduct()) {
-                                pr.setRevenu(pr.getRevenu() * unlock.getRatio());
-                            }
-                        } else if (unlock.getTyperatio().equals("vitesse")) {
-                            for (ProductType pr : world.getProducts().getProduct()) {
-                                pr.setVitesse((int) (pr.getVitesse() / unlock.getRatio()));
-                                pr.setTimeleft((long) (pr.getTimeleft() / unlock.getRatio()));
-                            }
+                        switch (unlock.getTyperatio()) {
+                            case GAIN:
+                                for (ProductType pr : world.getProducts().getProduct()) {
+                                    pr.setRevenu(pr.getRevenu() * unlock.getRatio());
+                                }
+                                break;
+                            default:
+                                for (ProductType pr : world.getProducts().getProduct()) {
+                                    pr.setVitesse((int) (pr.getVitesse() / unlock.getRatio()));
+                                    pr.setTimeleft((long) (pr.getTimeleft() / unlock.getRatio()));
+                                }
+                                break;
                         }
                     }
                 }
@@ -232,13 +236,16 @@ public class Services {
         }
         upgrade.setUnlocked(!upgrade.isUnlocked());
         ProductType p = findProductById(world, u.getIdcible());
-        if (u.getTyperatio().equals("gain")) {
-            p.setRevenu(p.getRevenu() * upgrade.getRatio());
-        } else if (u.getTyperatio().equals("vitesse")) {
-            p.setVitesse((int) (p.getVitesse() / upgrade.getRatio()));
-            System.out.println(p.getVitesse());
-            p.setTimeleft((long) (p.getTimeleft() / upgrade.getRatio()));
-            System.out.println(p.getTimeleft());
+        switch (u.getTyperatio()) {
+            case GAIN:
+                p.setRevenu(p.getRevenu() * upgrade.getRatio());
+                break;
+            default:
+                p.setVitesse((int) (p.getVitesse() / upgrade.getRatio()));
+                System.out.println(p.getVitesse());
+                p.setTimeleft((long) (p.getTimeleft() / upgrade.getRatio()));
+                System.out.println(p.getTimeleft());
+                break;
         }
         world.setMoney(world.getMoney() - upgrade.getSeuil());
         world.setLastupdate(System.currentTimeMillis());
@@ -257,17 +264,21 @@ public class Services {
             return false;
         }
         a.setUnlocked(!a.isUnlocked());
-        if (a.getTyperatio().equals("ange")) {
-            world.setAngelbonus((int) (world.getAngelbonus() + a.getRatio()));
-        } else if (a.getTyperatio().equals("gain")) {
-            for (ProductType p : world.getProducts().getProduct()) {
-                p.setRevenu(p.getRevenu() * a.getRatio());
-            }
-        } else if (a.getTyperatio().equals("vitesse")) {
-            for (ProductType p : world.getProducts().getProduct()) {
-                p.setVitesse((int) (p.getVitesse() / a.getRatio()));
-                p.setTimeleft((long) (p.getTimeleft() / a.getRatio()));
-            }
+        switch (a.getTyperatio()) {
+            case GAIN:
+                for (ProductType p : world.getProducts().getProduct()) {
+                    p.setRevenu(p.getRevenu() * a.getRatio());
+                }
+                break;
+            case VITESSE:
+                for (ProductType p : world.getProducts().getProduct()) {
+                    p.setVitesse((int) (p.getVitesse() / a.getRatio()));
+                    p.setTimeleft((long) (p.getTimeleft() / a.getRatio()));
+                }
+                break;
+            default:
+                world.setAngelbonus((int) (world.getAngelbonus() + a.getRatio()));
+                break;
         }
         world.setActiveangels(world.getActiveangels() - angelupgrade.getSeuil());
         world.setLastupdate(System.currentTimeMillis());
