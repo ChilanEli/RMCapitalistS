@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
 import generated.*;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 
 /**
@@ -109,22 +110,31 @@ public class GenericResource {
         PallierType manager = new Gson().fromJson(data, PallierType.class);
         service.updateManager(username, manager);
     }
-//
-//    @PUT
-//    @Path("upgrade")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public void putUpgrade(String data, @Context HttpServletRequest request) throws JAXBException {
-//        String username = request.getHeader("X-user");
-//        PallierType upgrade = new Gson().fromJson(data, PallierType.class);
-//        service.updateUpgrade(upgrade, username);
-//    }
-//
-//    @PUT
-//    @Path(APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public void putAngelUpgrade(String data, @Context HttpServletRequest request) throws JAXBException {
-//        String username = request.getHeader("X-user");
-//        PallierType angelupgrade = new Gson().fromJson(data, PallierType.class);
-//        service.updateAngelUpgrade(angelupgrade, username);
-//    }
+
+    @PUT
+    @Path("upgrade")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void putUpgrade(String data, @Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        PallierType upgrade = new Gson().fromJson(data, PallierType.class);
+        service.updateUpgrade(username, upgrade);
+    }
+
+    @PUT
+    @Path("angelupgrade")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void putAngelUpgrade(String data, @Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        PallierType angelupgrade = new Gson().fromJson(data, PallierType.class);
+        service.updateAngelUpgrade(username, angelupgrade);
+    }    
+
+    @DELETE
+    @Path("world")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void removeWorld(@Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        service.resetWorld(username);
+        System.out.println("DELETE WORLD");
+    }
 }

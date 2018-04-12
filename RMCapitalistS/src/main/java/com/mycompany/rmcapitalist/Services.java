@@ -48,7 +48,7 @@ public class Services {
 
     public World getWorld(String username) throws JAXBException {
         World world = readWorldFromXml(username);
-        //calcNewScore(world);
+        calcNewScore(world);
         world.setLastupdate(System.currentTimeMillis());
         saveWorldToXml(username, world);
         return world;
@@ -97,7 +97,7 @@ public class Services {
                     TyperatioType type = p.getTyperatio();
                     if (p.getTyperatio() == type.fromValue("GAIN")) {
                         product.setRevenu(product.getRevenu() * p.getRatio());
-                    } else if (p.getTyperatio() == type.fromValue("VITESSE")){
+                    } else if (p.getTyperatio() == type.fromValue("VITESSE")) {
 
                         product.setVitesse((int) (product.getVitesse() / p.getRatio()));
                         product.setTimeleft((long) (product.getTimeleft() / p.getRatio()));
@@ -114,13 +114,12 @@ public class Services {
                         }
                     }
                     if (isReached) {
-                        unlock.setUnlocked(true);
-                        TyperatioType type = unlock.getTyperatio();
-                        if (unlock.getTyperatio() == type.fromValue("GAIN")) {
+                        unlock.setUnlocked(true);;
+                        if (unlock.getTyperatio().equals("gain")) {
                             for (ProductType pr : world.getProducts().getProduct()) {
                                 pr.setRevenu(pr.getRevenu() * unlock.getRatio());
                             }
-                        } else if (unlock.getTyperatio() == type.fromValue("VITESSE")) {
+                        } else if (unlock.getTyperatio().equals("vitesse")) {
                             for (ProductType pr : world.getProducts().getProduct()) {
                                 pr.setVitesse((int) (pr.getVitesse() / unlock.getRatio()));
                                 pr.setTimeleft((long) (pr.getTimeleft() / unlock.getRatio()));
@@ -153,16 +152,18 @@ public class Services {
             return false;
         }
         // débloquer ce manager 
-
+        manager.setUnlocked(true);
         // trouver le produit correspondant au manager
         ProductType product = findProductById(world, manager.getIdcible());
         if (product == null) {
             return false;
         }
         // débloquer le manager de ce produit
-
+        product.setManagerUnlocked(true);
         // soustraire de l'argent du joueur le cout du manager
+        world.setMoney(world.getMoney() - manager.getSeuil());
         // sauvegarder les changements au monde
+        world.setLastupdate(System.currentTimeMillis());
         saveWorldToXml(username, world);
         return true;
     }
@@ -170,7 +171,6 @@ public class Services {
     private ProductType findProductById(World world, int id) {
         try {
             return world.getProducts().getProduct().get(id - 1);
-
         } catch (Exception e) {
             Logger.getLogger(GenericResource.class
                     .getName()).log(Level.SEVERE, null, e);
@@ -218,5 +218,108 @@ public class Services {
                 }
             }
         }
+    }
+
+    public Boolean updateUpgrade(String username, PallierType upgrade) throws JAXBException {
+        // aller chercher le monde qui correspond au joueur
+        World world = getWorld(username);
+
+        // trouver dans ce monde, le pallier équivalent à celui passé 
+        // en paramètre 
+        PallierType u = getUpgrade(world, upgrade.getName());
+        if (u == null) {
+            return false;
+        }
+        upgrade.setUnlocked(!upgrade.isUnlocked());
+        ProductType p = findProductById(world, u.getIdcible());
+        if (u.getTyperatio().equals("gain")) {
+            p.setRevenu(p.getRevenu() * upgrade.getRatio());
+        } else if (u.getTyperatio().equals("vitesse")) {
+            p.setVitesse((int) (p.getVitesse() / upgrade.getRatio()));
+            System.out.println(p.getVitesse());
+            p.setTimeleft((long) (p.getTimeleft() / upgrade.getRatio()));
+            System.out.println(p.getTimeleft());
+        }
+        world.setMoney(world.getMoney() - upgrade.getSeuil());
+        world.setLastupdate(System.currentTimeMillis());
+        saveWorldToXml(username, world);
+        return true;
+    }
+
+    public Boolean updateAngelUpgrade(String username, PallierType angelupgrade) throws JAXBException {
+        // aller chercher le monde qui correspond au joueur
+        World world = getWorld(username);
+
+        // trouver dans ce monde, le pallier équivalent à celui passé 
+        // en paramètre 
+        PallierType a = getAngel(world, angelupgrade.getName());
+        if (a == null) {
+            return false;
+        }
+        a.setUnlocked(!a.isUnlocked());
+        if (a.getTyperatio().equals("ange")) {
+            world.setAngelbonus((int) (world.getAngelbonus() + a.getRatio()));
+        } else if (a.getTyperatio().equals("gain")) {
+            for (ProductType p : world.getProducts().getProduct()) {
+                p.setRevenu(p.getRevenu() * a.getRatio());
+            }
+        } else if (a.getTyperatio().equals("vitesse")) {
+            for (ProductType p : world.getProducts().getProduct()) {
+                p.setVitesse((int) (p.getVitesse() / a.getRatio()));
+                p.setTimeleft((long) (p.getTimeleft() / a.getRatio()));
+            }
+        }
+        world.setActiveangels(world.getActiveangels() - angelupgrade.getSeuil());
+        world.setLastupdate(System.currentTimeMillis());
+        saveWorldToXml(username, world);
+        return true;
+    }
+
+    private PallierType getUpgrade(World world, String name) {
+        try {
+            for (PallierType u : world.getUpgrades().getPallier()) {
+                if (u.getName().equals(name)) {
+                    return u;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            Logger.getLogger(GenericResource.class
+                    .getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
+    }
+
+    private PallierType getAngel(World world, String name) {
+        try {
+            for (PallierType angelupgrade : world.getAngelupgrades().getPallier()) {
+                if (angelupgrade.getName().equals(name)) {
+                    return angelupgrade;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            Logger.getLogger(GenericResource.class
+                    .getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
+    }
+
+    public void resetWorld(String username) throws JAXBException {
+        World w1 = getWorld(username);
+        double cptAnge = Math.round(150 * Math.sqrt(w1.getScore() / Math.pow(10, 15)) - w1.getTotalangels());
+
+        w1.setActiveangels(w1.getActiveangels() + cptAnge);
+        w1.setTotalangels(w1.getTotalangels() + cptAnge);
+
+        JAXBContext cont = JAXBContext.newInstance(World.class);
+        Unmarshaller u = cont.createUnmarshaller();
+        InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
+        World w2 = (World) u.unmarshal(input);
+        w2.setScore(w1.getScore());
+        w2.setTotalangels(w1.getTotalangels());
+        w2.setActiveangels(w1.getActiveangels());
+
+        saveWorldToXml(username, w2);
     }
 }

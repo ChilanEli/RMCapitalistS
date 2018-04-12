@@ -446,7 +446,7 @@ and open the template in the editor.
             <logo>img/angel.png</logo>
             <seuil>100000</seuil>
             <idcible>0</idcible>
-            <ratio>2</ratio>
+            <ratio>0.02</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
@@ -455,7 +455,7 @@ and open the template in the editor.
             <logo>img/angel.png</logo>
             <seuil>25000000</seuil>
             <idcible>0</idcible>
-            <ratio>2</ratio>
+            <ratio>0.02</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
