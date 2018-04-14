@@ -199,26 +199,26 @@ public class Services {
     }
 
     public void calcNewScore(World w) {
-        long temp = System.currentTimeMillis();
+        long tempDiff = System.currentTimeMillis() - w.getLastupdate();
         for (ProductType p : w.getProducts().getProduct()) {
             if ((p.isManagerUnlocked()) && (p.getQuantite() > 0)) {
-                long t = Math.floorDiv(temp - w.getLastupdate() + p.getVitesse() - p.getTimeleft(), p.getVitesse());
-                long tempRest = Math.floorDiv(temp - w.getLastupdate() + p.getVitesse() - p.getTimeleft(), p.getVitesse());
+                long t = (tempDiff - p.getVitesse() + p.getTimeleft()) / p.getVitesse();
+                long tempRest = (tempDiff - p.getVitesse() + p.getTimeleft()) % p.getVitesse();
 
                 w.setMoney(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus())) * t);
                 w.setScore(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus())) * t);
-
-                p.setTimeleft(tempRest);
-                if (p.getTimeleft() < 0) {
+                //ça marche 1 fois sur 3
+                //p.setTimeleft(tempRest);
+                p.setTimeleft(0);
+                if (p.getTimeleft() < 0 || p.getTimeleft() >= p.getVitesse()) {
                     p.setTimeleft(0);
                 }
             } else {
-                if (p.getTimeleft() > 0 && p.getTimeleft() <= temp - w.getLastupdate()) {
-                    w.setMoney(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus())));
-                    w.setScore(w.getMoney() + (p.getRevenu() * (1 + w.getActiveangels() * w.getAngelbonus())));
+                if (p.getTimeleft() >= 0 && p.getTimeleft() <= tempDiff) {
                     p.setTimeleft(0);
                 } else if (p.getTimeleft() > 0) {
-                    p.setTimeleft(p.getTimeleft() - (temp - w.getLastupdate()));
+                    //p.setTimeleft(p.getTimeleft() - tempDiff);
+                    p.setTimeleft(0);
                 }
             }
         }
@@ -242,9 +242,7 @@ public class Services {
                 break;
             default:
                 p.setVitesse((int) (p.getVitesse() / upgrade.getRatio()));
-                System.out.println(p.getVitesse());
                 p.setTimeleft((long) (p.getTimeleft() / upgrade.getRatio()));
-                System.out.println(p.getTimeleft());
                 break;
         }
         world.setMoney(world.getMoney() - upgrade.getSeuil());
@@ -327,6 +325,7 @@ public class Services {
         Unmarshaller u = cont.createUnmarshaller();
         InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
         World w2 = (World) u.unmarshal(input);
+        
         w2.setScore(w1.getScore());
         w2.setTotalangels(w1.getTotalangels());
         w2.setActiveangels(w1.getActiveangels());

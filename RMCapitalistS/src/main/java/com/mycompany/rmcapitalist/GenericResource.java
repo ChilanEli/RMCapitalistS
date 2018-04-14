@@ -78,7 +78,6 @@ public class GenericResource {
         String username = request.getHeader("X-user");
         World world;
         try {
-            System.out.println(username);
             // On récupère le world courrant
             world = service.getWorld(username);
             // Génère un ResponseBuilder avec un "OK status" et le build
@@ -135,6 +134,5 @@ public class GenericResource {
     public void removeWorld(@Context HttpServletRequest request) throws JAXBException {
         String username = request.getHeader("X-user");
         service.resetWorld(username);
-        System.out.println("DELETE WORLD");
     }
 }

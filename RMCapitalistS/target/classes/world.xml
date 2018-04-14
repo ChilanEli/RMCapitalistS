@@ -11,7 +11,7 @@ and open the template in the editor.
     xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
     <name>Capitalist Rick and Morty</name>
     <logo>img/logo.png</logo>
-    <money>100000000.00</money>
+    <money>0</money>
     <score>0</score>
     <totalangels>1</totalangels>
     <activeangels>1</activeangels>
@@ -26,7 +26,7 @@ and open the template in the editor.
             <croissance>1.07</croissance>
             <revenu>1</revenu>
             <vitesse>5000</vitesse>
-            <quantite>0</quantite>
+            <quantite>1</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
