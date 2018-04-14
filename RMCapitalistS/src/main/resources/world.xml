@@ -13,9 +13,9 @@ and open the template in the editor.
     <logo>img/logo.png</logo>
     <money>0</money>
     <score>0</score>
-    <totalangels>1</totalangels>
-    <activeangels>1</activeangels>
-    <angelbonus>2</angelbonus>
+    <totalangels>0</totalangels>
+    <activeangels>0</activeangels>
+    <angelbonus>0</angelbonus>
     <lastupdate>0</lastupdate>
     <products>
         <product>
@@ -473,7 +473,7 @@ and open the template in the editor.
         <pallier>
             <name>Mr. Poopybutthole</name>
             <logo>img/managers/m1.png</logo>
-            <seuil>1</seuil>
+            <seuil>10</seuil>
             <idcible>1</idcible>
             <ratio></ratio>
             <typeratio></typeratio>
